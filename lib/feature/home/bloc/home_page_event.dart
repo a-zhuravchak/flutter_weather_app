@@ -8,3 +8,5 @@ class FetchWeather extends HomePageEvent {
 
   FetchWeather(this.cityName);
 }
+
+class ClearSelection extends HomePageEvent {}

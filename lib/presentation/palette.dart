@@ -16,5 +16,5 @@ class Palette {
   static const Color onSurfaceVariant = Color(0xFF64748B);
 
   static const Color surfaceContainer = Color(0xFFFFFFFF);
-  static const Color shadow = Colors.black12;
+  static const Color shadow = Colors.white;
 }

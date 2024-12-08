@@ -85,9 +85,7 @@ ThemeData createTheme() {
       style: ElevatedButton.styleFrom(
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: const StadiumBorder(),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       ),
     ),
@@ -101,33 +99,28 @@ ThemeData createTheme() {
   );
 }
 
-InputDecorationTheme createInputDecorationScheme(
-    ColorScheme colorScheme,
+InputDecorationTheme createInputDecorationScheme(ColorScheme colorScheme,
     dynamic supplementaryColorsExtension,
-    TextTheme textTheme,
-    ) {
+    TextTheme textTheme,) {
   return InputDecorationTheme(
     filled: true,
     fillColor: colorScheme.surfaceContainer,
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: colorScheme.onSurfaceVariant, width: 1),
+      borderRadius: BorderRadius.circular(30),
+      borderSide: BorderSide(color: colorScheme.secondary, width: 2),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: colorScheme.onSurfaceVariant, width: 1),
+      borderRadius: BorderRadius.circular(30),
+      borderSide: BorderSide(color: colorScheme.secondary, width: 2),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: colorScheme.primary, width: 2),
+      borderRadius: BorderRadius.circular(30),
+      borderSide: BorderSide(color: colorScheme.secondary, width: 2),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(30),
       borderSide: BorderSide(color: colorScheme.error, width: 2),
     ),
-    hintStyle: textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant),
-    labelStyle: textTheme.bodyMedium?.copyWith(color: colorScheme.primary),
-    errorStyle: textTheme.bodyMedium?.copyWith(color: colorScheme.error),
   );
 }

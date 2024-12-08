@@ -1,23 +1,35 @@
-import 'dart:convert';
-
-import '../../core/network/api_client.dart';
 import '../../core/util/api_constants.dart';
-import '../../domain/entities/weather_entity.dart';
 
 class WeatherApi {
-  final ApiClient apiClient;
+  static const String _apiBaseUrl = "api.openweathermap.org";
+  static const String _apiPath = "/data/2.5/";
+  final apiKey = ApiConstants.apiKey;
 
-  WeatherApi(this.apiClient);
+  Uri weather(String city) => _buildUri(
+        endpoint: "weather",
+        parametersBuilder: () => cityQueryParameters(city),
+      );
 
-  Future<WeatherEntity> fetchWeather(String cityName) async {
-    final url = Uri.parse(
-        '${ApiConstants.baseUrl}?q=$cityName&appid=${ApiConstants.apiKey}&units=metric');
+  Uri forecast(String city) => _buildUri(
+        endpoint: "forecast",
+        parametersBuilder: () => cityQueryParameters(city),
+      );
 
-    final response = await apiClient.get(url);
-    if (response.statusCode == 200) {
-      return WeatherEntity.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception("Error fetching weather data");
-    }
+  Uri _buildUri({
+    required String endpoint,
+    required Map<String, dynamic> Function() parametersBuilder,
+  }) {
+    return Uri(
+      scheme: "https",
+      host: _apiBaseUrl,
+      path: "$_apiPath$endpoint",
+      queryParameters: parametersBuilder(),
+    );
   }
+
+  Map<String, dynamic> cityQueryParameters(String city) => {
+        "q": city,
+        "appid": apiKey,
+        "units": "metric",
+      };
 }

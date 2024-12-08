@@ -9,8 +9,11 @@ final getIt = GetIt.instance;
 
 void setupLocator() {
   getIt.registerLazySingleton<ApiClient>(() => ApiClient());
-  getIt.registerLazySingleton<WeatherApi>(() => WeatherApi(getIt<ApiClient>()));
+  getIt.registerLazySingleton<WeatherApi>(() => WeatherApi());
   getIt.registerLazySingleton<WeatherRepository>(
-          () => WeatherRepositoryImpl(getIt<WeatherApi>()));
-
+    () => WeatherRepositoryImpl(
+      weatherApi: getIt<WeatherApi>(),
+      client: getIt<ApiClient>(),
+    ),
+  );
 }

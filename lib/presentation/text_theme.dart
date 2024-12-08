@@ -5,19 +5,27 @@ TextTheme createTextTheme(ColorScheme colorScheme) {
     headlineMedium: TextStyle(
       fontSize: 22,
       fontWeight: FontWeight.bold,
-      color: colorScheme.onSurface,
+      color: colorScheme.onPrimary,
     ),
     bodyMedium: TextStyle(
       fontSize: 16,
-      color: colorScheme.onSurfaceVariant,
+      color: colorScheme.onPrimary,
+    ),
+    bodySmall: TextStyle(
+      fontSize: 12,
+      color: colorScheme.onPrimary,
+    ),
+    labelSmall: TextStyle(
+      fontSize: 8,
+      color: colorScheme.onPrimary,
     ),
     titleLarge: TextStyle(
-      fontSize: 18,
+      fontSize: 24,
       fontWeight: FontWeight.w600,
-      color: colorScheme.primary,
+      color: colorScheme.onPrimary,
     ),
     labelLarge: TextStyle(
-      fontSize: 14,
+      fontSize: 20,
       fontWeight: FontWeight.w500,
       color: colorScheme.onPrimary,
     ),
