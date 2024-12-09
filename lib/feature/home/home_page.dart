@@ -119,6 +119,7 @@ class _FavoritesWidget extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         clipBehavior: Clip.antiAliasWithSaveLayer,
+        padding: const EdgeInsets.symmetric(vertical: 20),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(20.0),
@@ -150,7 +151,8 @@ class _FavoritesWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Check your favourite location',
+                      'Check out your favourite location',
+                      overflow: TextOverflow.ellipsis,
                       style: theme.textTheme.bodyMedium,
                     ),
                   ],

@@ -15,13 +15,14 @@ class HomeLoaded extends HomePageState {
   });
 }
 
-class HomePagePushRoute extends HomePageState {
+class HomePagePushRoute extends HomeLoaded {
   final String route;
   final String city;
 
   HomePagePushRoute({
     required this.route,
     required this.city,
+    required super.favorites,
   });
 }
 

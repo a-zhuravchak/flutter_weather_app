@@ -53,7 +53,7 @@ class DayForecastWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Today',
+                    'LATER TODAY',
                     style: textTheme.bodyMedium,
                   ),
                 ],

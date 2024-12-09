@@ -19,7 +19,13 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
       emit(HomeLoading());
       try {
         await _repository.getWeather(city: event.cityName);
-        emit(HomePagePushRoute(route: AppRoutes.cityWeather, city: event.cityName.toUpperCase()));
+        emit(
+          HomePagePushRoute(
+            route: AppRoutes.cityWeather,
+            city: event.cityName.toUpperCase(),
+            favorites: _cityStorageService.currentCities,
+          ),
+        );
       } on APIException catch (e) {
         emit(HomeError(e.message));
       } catch (e) {
@@ -33,7 +39,11 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
       emit(HomeLoaded(favorites: event.cities));
     });
     on<OpenCity>((event, emit) {
-      emit(HomePagePushRoute(route: AppRoutes.cityWeather, city: event.city.toUpperCase()));
+      emit(HomePagePushRoute(
+        route: AppRoutes.cityWeather,
+        city: event.city.toUpperCase(),
+        favorites: _cityStorageService.currentCities,
+      ));
     });
     _citiesSubscription = _cityStorageService.citiesStream.listen((cities) {
       add(FavoritesUpdated(cities));

@@ -52,7 +52,7 @@ class WeekForecastWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'In the next few days',
+                    'IN THE NEXT FEW DAYS',
                     style: textTheme.bodyMedium,
                   ),
                 ],
