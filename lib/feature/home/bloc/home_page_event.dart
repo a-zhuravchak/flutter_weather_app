@@ -9,4 +9,16 @@ class FetchWeather extends HomePageEvent {
   FetchWeather(this.cityName);
 }
 
+class OpenCity extends HomePageEvent {
+  final String city;
+
+  OpenCity(this.city);
+}
+
 class ClearSelection extends HomePageEvent {}
+
+class FavoritesUpdated extends HomePageEvent {
+  final List<String> cities;
+
+  FavoritesUpdated(this.cities);
+}

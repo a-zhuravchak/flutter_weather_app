@@ -31,6 +31,26 @@ class CityWeatherPage extends StatelessWidget {
                 leading: BackButton(
                   color: theme.colorScheme.onPrimary,
                 ),
+                actions: [
+                  if (state is WeatherLoaded)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: IconButton(
+                        icon: state.favorite
+                            ? Icon(
+                                Icons.favorite,
+                                color: theme.colorScheme.onPrimary,
+                              )
+                            : Icon(
+                                Icons.favorite_border,
+                                color: theme.colorScheme.onPrimary,
+                              ),
+                        onPressed: () => state.favorite
+                            ? bloc.add(RemoveFromFavorites())
+                            : bloc.add(AddToFavorites()),
+                      ),
+                    ),
+                ],
               ),
               body: Padding(
                 padding: const EdgeInsets.all(16.0),

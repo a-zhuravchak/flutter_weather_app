@@ -5,17 +5,13 @@ sealed class HomePageState {}
 
 final class HomePageEmpty extends HomePageState {}
 
-class WeatherLoading extends HomePageState {}
+class HomeLoading extends HomePageState {}
 
-class WeatherLoaded extends HomePageState {
-  final WeatherData weatherNow;
-  final List<WeatherData> forecast;
-  final String city;
+class HomeLoaded extends HomePageState {
+  final List<String> favorites;
 
-  WeatherLoaded({
-    required this.weatherNow,
-    required this.forecast,
-    required this.city,
+  HomeLoaded({
+    required this.favorites,
   });
 }
 
@@ -29,8 +25,8 @@ class HomePagePushRoute extends HomePageState {
   });
 }
 
-class WeatherError extends HomePageState {
+class HomeError extends HomePageState {
   final String message;
 
-  WeatherError(this.message);
+  HomeError(this.message);
 }

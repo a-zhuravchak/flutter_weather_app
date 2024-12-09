@@ -8,3 +8,7 @@ class FetchWeather extends CityWeatherEvent {
 
   FetchWeather(this.cityName);
 }
+
+class AddToFavorites extends CityWeatherEvent {}
+
+class RemoveFromFavorites extends CityWeatherEvent {}

@@ -10,7 +10,7 @@ import 'feature/home/home_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-  setupDI();
+  await setupDI();
 
   runApp(const MyApp());
 }

@@ -17,6 +17,8 @@ dependencies:
   flutter_dotenv: ^5.1.0
   json_annotation: ^4.8.1
   intl: ^0.18.1
+  shared_preferences: ^2.3.3
+  rxdart: ^0.27.7
 
   cupertino_icons: ^1.0.8
 
