@@ -31,5 +31,5 @@ OpenWeatherMap API.
 
 ## Screenshots:
 
-![App Screenshot](assets/S1.jpg)
-![App Screenshot](assets/S2.jpg)
+![App Screenshot](assets/images/S1.jpg)
+![App Screenshot](assets/images/S2.jpg)
