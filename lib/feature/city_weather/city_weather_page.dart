@@ -22,12 +22,15 @@ class CityWeatherPage extends StatelessWidget {
         },
         builder: (context, state) {
           final bloc = context.read<CityWeatherBloc>();
+          final theme = Theme.of(context);
           return GradientBackground(
             child: Scaffold(
               appBar: AppBar(
                 title: Text(cityName.toUpperCase()),
                 centerTitle: true,
-                leading: const BackButton(),
+                leading: BackButton(
+                  color: theme.colorScheme.onPrimary,
+                ),
               ),
               body: Padding(
                 padding: const EdgeInsets.all(16.0),

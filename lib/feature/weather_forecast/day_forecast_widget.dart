@@ -34,7 +34,7 @@ class DayForecastWidget extends StatelessWidget {
               offset: const Offset(0, 2),
             )
           ],
-          color: isDayTime ? theme.primaryColor : Colors.black.withOpacity(0.3),
+          color: isDayTime ? theme.primaryColor.withOpacity(0.5) : Colors.black.withOpacity(0.3),
         ),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -86,14 +86,13 @@ class _DayForecastList extends StatelessWidget {
       return SizedBox(
         width: constraints.maxWidth,
         height: 120,
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: List.generate(forecast.length, (index) {
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: forecast.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
               return _ForecastItem(item: forecast[index]);
             }),
-          ),
-        ),
       );
     });
   }

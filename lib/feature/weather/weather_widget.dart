@@ -33,7 +33,7 @@ class WeatherWidget extends StatelessWidget {
               offset: const Offset(0, 2),
             )
           ],
-          color: isDayTime ? theme.primaryColor : Colors.black.withOpacity(0.3),
+          color: isDayTime ? theme.primaryColor.withOpacity(0.5) : Colors.black.withOpacity(0.3),
         ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
