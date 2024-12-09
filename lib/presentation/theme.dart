@@ -27,10 +27,10 @@ ThemeData createTheme() {
     // App Bar Theme
     appBarTheme: AppBarTheme(
       centerTitle: true,
-      backgroundColor: colorScheme.surfaceContainer,
+      backgroundColor: Colors.transparent,
       foregroundColor: colorScheme.onSurface,
       titleTextStyle: textTheme.headlineMedium?.copyWith(
-        color: colorScheme.onSurface,
+        color: colorScheme.onPrimary,
       ),
       surfaceTintColor: null,
       elevation: 0,
@@ -99,9 +99,11 @@ ThemeData createTheme() {
   );
 }
 
-InputDecorationTheme createInputDecorationScheme(ColorScheme colorScheme,
-    dynamic supplementaryColorsExtension,
-    TextTheme textTheme,) {
+InputDecorationTheme createInputDecorationScheme(
+  ColorScheme colorScheme,
+  dynamic supplementaryColorsExtension,
+  TextTheme textTheme,
+) {
   return InputDecorationTheme(
     filled: true,
     fillColor: colorScheme.surfaceContainer,

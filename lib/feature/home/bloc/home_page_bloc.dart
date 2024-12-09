@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_app/data/api_exception.dart';
 import 'package:flutter_weather_app/domain/repo/weather_repository.dart';
+import 'package:flutter_weather_app/presentation/routing/routes.dart';
 
 import '../../../core/di/di.dart';
 import '../../../domain/entities/weather_data.dart';
@@ -15,15 +16,8 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     on<FetchWeather>((event, emit) async {
       emit(WeatherLoading());
       try {
-        final weather = await _repository.getWeather(city: event.cityName);
-        final forecast = await _repository.getForecast(city: event.cityName);
-
-        final uiForecast = forecast.list.map((item) => WeatherData.from(item)).toList();
-
-        emit(WeatherLoaded(
-            weatherNow: WeatherData.from(weather),
-            forecast: uiForecast,
-            city: event.cityName.toUpperCase()));
+        await _repository.getWeather(city: event.cityName);
+        emit(HomePagePushRoute(route: AppRoutes.cityWeather, city: event.cityName.toUpperCase()));
       } on APIException catch (e) {
         emit(WeatherError(e.message));
       } catch (e) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../core/util/time_util.dart';
 import '../../domain/entities/weather_data.dart';
-import '../weather_forecast/weather_forecast_widget.dart';
 
 class WeatherWidget extends StatelessWidget {
   const WeatherWidget({
@@ -17,6 +17,7 @@ class WeatherWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final bool isDayTime = TimeUtils.isDayTime();
     return Center(
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
@@ -32,7 +33,7 @@ class WeatherWidget extends StatelessWidget {
               offset: const Offset(0, 2),
             )
           ],
-          color: theme.primaryColor,
+          color: isDayTime ? theme.primaryColor : Colors.black.withOpacity(0.3),
         ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -43,9 +44,6 @@ class WeatherWidget extends StatelessWidget {
                 cityName: cityName,
                 data: weather,
               ),
-              ForecastWidget(
-                forecast: forecast,
-              )
             ],
           ),
         ),
@@ -70,41 +68,38 @@ class WeatherDisplay extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     final icon = data.iconUrl;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Image.network(
-          icon,
-          errorBuilder: (context, error, stackTrace) {
-            return const Icon(Icons.error);
-          },
-          width: 40.0,
-          height: 40.0,
-        ),
-        const SizedBox(width: 10),
-        Text(
-          cityName,
-          style: textTheme.titleLarge,
-        ),
-        const SizedBox(width: 10),
-        const Spacer(),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              '${data.temp.celsius.toStringAsFixed(1)}°C',
-              style: textTheme.titleLarge,
-            ),
-            const SizedBox(height: 10),
-            Text(
-              data.description,
-              style: textTheme.bodyMedium,
-            ),
-          ],
-        ),
-      ],
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            '${data.temp.celsius.toStringAsFixed(0)}°C',
+            style: textTheme.titleLarge?.copyWith(fontSize: 70),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.network(
+                icon,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(Icons.error);
+                },
+                width: 50.0,
+                height: 50.0,
+                scale: 0.3,
+              ),
+              Text(
+                data.description,
+                style: textTheme.bodyMedium,
+              ),
+            ],
+          ),
+          const SizedBox(width: 10),
+        ],
+      ),
     );
   }
 }

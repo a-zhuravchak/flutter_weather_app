@@ -7,7 +7,7 @@ import '../network/api_client.dart';
 
 final getIt = GetIt.instance;
 
-void setupLocator() {
+void setupDI() {
   getIt.registerLazySingleton<ApiClient>(() => ApiClient());
   getIt.registerLazySingleton<WeatherApi>(() => WeatherApi());
   getIt.registerLazySingleton<WeatherRepository>(

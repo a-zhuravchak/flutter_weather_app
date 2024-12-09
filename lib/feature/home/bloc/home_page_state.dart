@@ -19,6 +19,16 @@ class WeatherLoaded extends HomePageState {
   });
 }
 
+class HomePagePushRoute extends HomePageState {
+  final String route;
+  final String city;
+
+  HomePagePushRoute({
+    required this.route,
+    required this.city,
+  });
+}
+
 class WeatherError extends HomePageState {
   final String message;
 
